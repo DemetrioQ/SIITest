@@ -21,7 +21,6 @@ const CardForm = () => {
         });
     };
 
-    //const val = e.target.validity.valid ? e.target.value : cardNumber;
     return (
         <div>
             <div className='outer'>
