@@ -10,7 +10,7 @@ const CardContainer = ({ cardNumber, name, expDate }) => {
             setCardNumberFormatted('');
             return;
         }
-        
+
         const formatted = cardNumber
             ?.match(/.{1,4}/g)
             ?.join(' ')
@@ -21,13 +21,10 @@ const CardContainer = ({ cardNumber, name, expDate }) => {
         return;
     }, [cardNumber]);
 
-
     return (
         <div className='card-container'>
             <div className='front'>
-                <div className='image'>
-                    <img src={cardImage} alt='Card' className='card-image' draggable='false' />
-                </div>
+                <img src={cardImage} alt='Card' className='card-image' draggable='false' />
                 <div className='card-number-box card-container-text'>
                     <span className='card-container-text'>{cardNumberFormatted}</span>
                 </div>
@@ -42,6 +39,14 @@ const CardContainer = ({ cardNumber, name, expDate }) => {
                             <span className='exp-month card-container-text'>{expDate}</span>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='back'>
+                <div class='stripe'></div>
+                <div class='box'>
+                    <span>cvv</span>
+                    <div class='cvv-box'></div>
+                    <img src='image/visa.png' alt='' />
                 </div>
             </div>
         </div>
