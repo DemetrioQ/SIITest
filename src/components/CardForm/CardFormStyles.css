@@ -1,0 +1,138 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: auto;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    border: 1px solid #333;
+    outline-offset: 10px;
+    border-radius: 2.5%;
+    width: 600px;
+}
+.centered:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.01px;
+    left: 0.01px;
+    right: 0.01px;
+    bottom: 0.01px;
+    outline: 0.01px solid #333;
+    border-radius: 0%;
+}
+form {
+    margin: 25px;
+}
+
+.card-container {
+    left: 15px;
+    bottom: 220px;
+    margin-bottom: -150px;
+    position: relative;
+    height: 250px;
+    width: 480px;
+}
+
+.card-container .front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgb(12, 18, 29));
+    border-radius: 10px;
+    backface-visibility: hidden;
+    padding: 20px;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.4s ease-out;
+}
+.card-container .front .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.card-container img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+/* .card-container .front .image img {
+    height: 50px;
+} */
+/* .chip-image {
+    position: absolute;
+    top: 75px;
+    left: 30px;
+} */
+.card-container .front .card-number-box {
+    position: absolute;
+    bottom: 50px;
+    left: 90px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.card-container .front .card-holder-name {
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+    font-size: 22px;
+    color: #fff;
+}
+.card-container .front .expiration {
+    position: absolute;
+    bottom: 15px;
+    left: 50px;
+    font-size: 22px;
+    color: #fff;
+}
+.card-container .front .valid {
+    position: absolute;
+    bottom: 15px;
+    right: 50px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.card-container .front .flexbox {
+    display: flex;
+}
+
+.card-container .front .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.card-container .front .flexbox .box {
+    font-size: 15px;
+    color: #fff;
+}
