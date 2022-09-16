@@ -77,7 +77,7 @@ const CardForm = () => {
                                 </div>
                                 <div className='form-group col-md-6'>
                                     <label className='form-bold-label'>Fecha Vencimiento</label>
-                                    <input type='month' className='form-control' name='expDate' onChange={handleChange} value={state.expDate} placeholder='' max={maxExpDate} required />
+                                    <input type='month' className='form-control' onKeyDown={(e) => e.preventDefault()} name='expDate' onChange={handleChange} value={state.expDate} placeholder='' max={maxExpDate} required />
                                 </div>
                             </div>
                             <div className='row mt-4 mb-4'>
@@ -94,7 +94,7 @@ const CardForm = () => {
                             <button type='submit' className='btn btn-primary col-md-4' style={{ borderRadius: '25px' }}>
                                 Agregar Tarjeta
                             </button>
-                            <button className='btn btn-secondary col-md-3' style={{ marginLeft: '10px', borderRadius: '25px' }} onClick={handleCancel}>
+                            <button type='button' className='btn btn-secondary col-md-3' style={{ marginLeft: '10px', borderRadius: '25px' }} onClick={handleCancel}>
                                 Cancelar
                             </button>
                         </form>
