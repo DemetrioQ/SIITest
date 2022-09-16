@@ -11,6 +11,10 @@ router.get('/all', async (req, res) => {
     cardController.getCards(req, res);
 });
 
+router.get('/get', async (req, res) => {
+    cardController.getCard(req, res);
+});
+
 //Update Card
 router.put('/update', async (req, res) => {
     cardController.updateCard(req, res);
