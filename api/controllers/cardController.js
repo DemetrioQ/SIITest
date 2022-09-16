@@ -21,8 +21,18 @@ exports.addCard = async (req, res) => {
 exports.getCards = async (req, res) => {
     try {
         const cards = await Card.find({}).select(['-__v', '-createdAt', '-updatedAt']);
-        console.log(cards);
         res.status(200).json(cards);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+exports.getCard = async (req, res) => {
+    let { _id } = req.body;
+
+    try {
+        const card = await Card.findById({ _id }).select(['-__v', '-createdAt', '-updatedAt']);
+        res.status(200).json(card);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -33,7 +43,6 @@ exports.deleteCard = async (req, res) => {
 
     try {
         const deletedCard = await Card.deleteOne({ _id: _id });
-        console.log(deletedCard);
         res.status(200).json(deletedCard);
     } catch (err) {
         console.log(err);
@@ -46,7 +55,6 @@ exports.updateCard = async (req, res) => {
 
     try {
         const updatedCard = await Card.findByIdAndUpdate({ _id }, { number: cardNumber, expDate: expDate, cardHolder: name, cvv: cvv }, { runValidators: true });
-        console.log(updatedCard);
         res.status(200).json(updatedCard);
     } catch (err) {
         console.log(err);
