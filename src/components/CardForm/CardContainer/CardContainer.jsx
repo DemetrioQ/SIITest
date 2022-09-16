@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import visaImage from '../../../assets/visa.png';
-import chipImage from '../../../assets/chip.png';
+
 import cardImage from '../../../assets/cardFront.png';
 
-const CardContainer = ({ cardNumber, name, expDate }) => {
-    const [cardNumberFormatted, setCardNumberFormatted] = useState('5375 4411 4540 0954');
+const CardContainer = ({ cardNumber, name, expDate, cvv, isRotated }) => {
+    const [cardNumberFormatted, setCardNumberFormatted] = useState('');
+    const [expDateFormatted, setExpDateFormatted] = useState('');
+
     useEffect(() => {
         if (!cardNumber) {
             setCardNumberFormatted('');
@@ -21,8 +22,22 @@ const CardContainer = ({ cardNumber, name, expDate }) => {
         return;
     }, [cardNumber]);
 
+    useEffect(() => {
+        if (!expDate) {
+            setCardNumberFormatted('');
+            return;
+        }
+
+        let formatted = expDate?.split('-');
+        formatted = `${formatted[1]}/${formatted[0].slice(-2)}`;
+
+        setExpDateFormatted(formatted);
+
+        return;
+    }, [expDate]);
+
     return (
-        <div className='card-container'>
+        <div className={`card-container ${isRotated ? 'rotate' : ''}`}>
             <div className='front'>
                 <img src={cardImage} alt='Card' className='card-image' draggable='false' />
                 <div className='card-number-box card-container-text'>
@@ -36,17 +51,16 @@ const CardContainer = ({ cardNumber, name, expDate }) => {
                     </div>
                     <div className='box'>
                         <div className='expiration'>
-                            <span className='exp-month card-container-text'>{expDate}</span>
+                            <span className='exp-month card-container-text'>{expDateFormatted}</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div className='back'>
-                <div class='stripe'></div>
-                <div class='box'>
-                    <span>cvv</span>
-                    <div class='cvv-box'></div>
-                    <img src='image/visa.png' alt='' />
+                <div className='stripe'></div>
+                <div className='box'>
+                    <div className='cvv-box'></div>
+                    <span className='card-container-text'>{cvv}</span>
                 </div>
             </div>
         </div>
