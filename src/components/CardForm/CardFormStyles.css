@@ -20,13 +20,21 @@
     padding: 20px;
     border-radius: 5px;
 }
-
-form {
-    margin: 25px;
+.inner input[type='month'] {
+    overflow: hidden;
+    position: relative;
+}
+.inner input[type='month']::-webkit-calendar-picker-indicator {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .card-container {
-    left: 15px;
+    left: 35px;
     bottom: 190px;
     margin-bottom: -150px;
     position: relative;
@@ -62,14 +70,7 @@ form {
     width: 100%;
     border-radius: 10px;
 }
-/* .card-container .front .image img {
-    height: 50px;
-} */
-/* .chip-image {
-    position: absolute;
-    top: 75px;
-    left: 30px;
-} */
+
 .card-container .front .card-number-box {
     position: absolute;
     bottom: 85px;
@@ -101,36 +102,42 @@ form {
     padding: 20px;
     text-align: right;
     backface-visibility: hidden;
-    background: linear-gradient(45deg, blueviolet, deeppink);
+    background: repeating-linear-gradient(65deg, rgb(14, 20, 31), rgb(20, 27, 39) 150px);
     transform: perspective(1000px) rotateY(180deg);
 }
 
-.card-container:hover {
+.rotate {
     transform: rotateY(180deg);
 }
 
-.card-container .back .stripe{
+.card-container .back .stripe {
     background: #000;
     width: 100%;
     margin: 10px 0;
     height: 50px;
 }
 
-.card-container .back .box{
+.card-container .back .box {
     padding: 0 20px;
 }
 
-.card-container .back .box span{
-    color:#fff;
+.card-container .back .box span {
+    color: #fff;
     font-size: 15px;
 }
-.card-container .back .box .cvv-box{
+.card-container .back .box .cvv-box {
     height: 50px;
     padding: 10px;
     margin-top: 5px;
-    color:#333;
+    color: #333;
     background: #fff;
     border-radius: 5px;
     width: 100%;
 }
 
+.shown {
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
+}
