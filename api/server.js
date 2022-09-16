@@ -8,7 +8,7 @@ const cardRoutes = require('./routes/card');
 dotenv.config();
 
 mongoose
-    .connect(process.env.MONGO_URL)
+    .connect('mongodb+srv://DemetrioQ:UsjQd4ttdaYiGMPx@siitest.e2awgns.mongodb.net/card?retryWrites=true&w=majority')
     .then(() => {
         console.log('DB connection succesfull!!!');
     })
