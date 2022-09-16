@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import CardContainer from './CardContainer/CardContainer';
 import './CardFormStyles.css';
@@ -49,10 +50,10 @@ const CardForm = () => {
         setState(initialState);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setCardError({ ...cardError, error: false });
-        setCvvError({ ...cardError, error: false });
+        setCvvError({ ...cvvError, error: false });
 
         if (state.cardNumber.length !== 16) {
             setCardError({ ...cardError, error: true });
@@ -60,6 +61,16 @@ const CardForm = () => {
 
         if (state.cvv.length !== 3) {
             setCvvError({ ...cvvError, error: true });
+        }
+
+        if (cvvError.error || cardError.error) return;
+
+        try {
+            var stateToSend = Object.assign({}, state);
+            delete stateToSend.isRotated;
+            await axios.post('http://localhost:4000/cards/add', stateToSend);
+        } catch (error) {
+            console.log(error);
         }
     };
     return (
