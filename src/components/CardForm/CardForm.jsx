@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardContainer from './CardContainer/CardContainer';
 import './CardFormStyles.css';
 
@@ -13,7 +14,7 @@ const initialState = {
 
 const maxExpDate = `${new Date().getFullYear() + 5}-${('0' + (new Date().getMonth() + 1)).slice(-2)}`;
 
-const CardForm = () => {
+const CardForm = ({ fetchCards }) => {
     const [state, setState] = useState(initialState);
     const [cardError, setCardError] = useState({
         error: false,
@@ -23,7 +24,10 @@ const CardForm = () => {
         error: false,
         message: 'CVV invalido. Numeros insuficientes',
     });
-
+    let navigate = useNavigate();
+    const navigateHome = () => {
+        navigate('/');
+    };
     const onRotate = () => {
         setState({
             ...state,
@@ -57,10 +61,12 @@ const CardForm = () => {
 
         if (state.cardNumber.length !== 16) {
             setCardError({ ...cardError, error: true });
+            return;
         }
 
         if (state.cvv.length !== 3) {
             setCvvError({ ...cvvError, error: true });
+            return;
         }
 
         if (cvvError.error || cardError.error) return;
@@ -69,6 +75,8 @@ const CardForm = () => {
             var stateToSend = Object.assign({}, state);
             delete stateToSend.isRotated;
             await axios.post('http://localhost:4000/cards/add', stateToSend);
+            fetchCards();
+            navigateHome();
         } catch (error) {
             console.log(error);
         }
