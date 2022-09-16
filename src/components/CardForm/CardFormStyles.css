@@ -60,8 +60,11 @@
 .card-container .card-container-text {
     color: rgb(68, 82, 102);
     text-shadow: -1px -1px 0 rgb(147, 162, 183);
+    
 }
-
+form label{
+    font-weight: bold;
+}
 .card-container .front img {
     display: block;
     max-width: 100%;
