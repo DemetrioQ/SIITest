@@ -51,7 +51,7 @@ const CardContainer = ({ cardNumber, name, expDate, cvv, isRotated }) => {
                     </div>
                     <div className='box'>
                         <div className='expiration'>
-                            <span className='exp-month card-container-text'>{expDateFormatted}</span>
+                            <span className='ard-container-text'>{expDateFormatted}</span>
                         </div>
                     </div>
                 </div>
