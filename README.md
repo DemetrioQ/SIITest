@@ -9,7 +9,7 @@
 -   CSS
 -   Bootrstrap
 
-### **Segundo bloquie**
+### **Segundo bloque**
 
 -   Node.js
 -   Express.js
